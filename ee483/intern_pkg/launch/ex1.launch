@@ -1,0 +1,12 @@
+<launch>
+<!-- <include file = "$(find pkg_name)/launch/launch_file_name.launch"/> -->
+
+<group ns = "sim"> 
+<node pkg = "turtlesim" name= "turtlesim" type = "turtlesim_node" output= "screen"/>
+<node pkg = "intern_pkg" name= "turtlemove" type = "turtle_move.py" output= "screen"/>
+<node pkg = "rqt_graph" name= "rqt_graph" type = "rqt_graph"/>
+
+<!-- <node pkg= "rostopic" name= "rostopic" type= "rostopic" args= "echo turtle1/pose" output= "screen" /> -->
+</group>
+</launch>
+
