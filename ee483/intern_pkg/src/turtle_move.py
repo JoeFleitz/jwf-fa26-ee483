@@ -6,15 +6,16 @@ from geometry_msgs.msg import Twist
 
 class TurtleMove: #class object
     def __init__(self): #constructor method that intializes the object
-        self.pub = rospy.Publisher('turtle11/cmd_vel', Twist, queue_size=10) #publisher
+        self.pub = rospy.Publisher('turtle1/cmd_vel', Twist, queue_size=10) #publisher
+        self.front = True
 
     def talk(self): #defines method
         msg = Twist() #new message object we will added the turtle's movements
         if self.front: # Move ahead
-        	msg.linear.x = 1
+            msg.linear.x = 1
             self.front = False
         else: # Move back
-            msg.linear.x = 1
+            msg.linear.x = -1
             self.front = True
         rospy.loginfo(self.front)
         self.pub.publish(msg) # publishes the Twist msg to the topic
