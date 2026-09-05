@@ -1,7 +1,7 @@
 # parameters
-ARG REPO_NAME="ex-repo"
-ARG DESCRIPTION="ex-repo"
-ARG MAINTAINER="YOUR NAME"
+ARG REPO_NAME="jwf-fa26-ee483"
+ARG DESCRIPTION="Joe's EE483 Exercise 1"
+ARG MAINTAINER="Joseph Fleitz"
 # pick an icon from: https://fontawesome.com/v4.7.0/icons/
 ARG ICON="cube"
 
