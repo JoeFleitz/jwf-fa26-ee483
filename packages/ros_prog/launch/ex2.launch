@@ -1,0 +1,15 @@
+<launch>
+<!-- <include file = "$(find pkg_name)/launch/launch_file_name.launch"/> -->
+<!-- The line above is commented byt shows how to call launch files from other packages -->
+<group ns = "sim">
+<!-- Creating a group to group nodes. This afect the namespace of the topics -->
+<node pkg = "turtlesim" name= "turtlesim" type = "turtlesim_node" output= "screen"/>
+<!-- Running node turtlesim_node from package turtlesim; the output screen ensures that we print in the terminal-->
+<node pkg = "ros_prog" name= "turtlemove" type = "ex2_square.py" output= "screen"/>
+<!-- Running node ex2_move.py from package ros_prog; the output screen ensures that we print in the terminal-->
+<!-- <node pkg = "rqt_graph" name= "rqt_graph" type = "rqt_graph"/> -->
+<!-- The line above is commented but it opens rqt_graph -->In [ ]:
+<!-- <node pkg= "rostopic" name= "rostopic" type= "rostopic" args= "echo turtle1/pose" output= "screen" /> -->
+<!-- The line above is commented but it echo the output_topic; Same as running rostopic echo turtle1/pose-->
+</group>
+</launch>
