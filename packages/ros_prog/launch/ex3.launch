@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="turtlesim" type="turtlesim_node" name="turtlesim"/>
+    <node pkg="ros_prog" type="ex2_square.py" name="ex2_square"/>
+    <node pkg="ros_prog" name="distance_calculator" type="distance_calc.py" output="screen"/>
+</launch>
