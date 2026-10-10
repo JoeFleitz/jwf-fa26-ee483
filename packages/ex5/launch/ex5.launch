@@ -1,0 +1,21 @@
+<launch>
+  <!-- Image processing node with parameters -->
+  <node pkg="ex5" type="image_processor.py" name="image_processor" output="screen">
+    <param name="crop_fraction" value="0.5"/>
+    <rosparam param="hsv_lower">[0, 0, 170]</rosparam>
+    <rosparam param="hsv_upper">[180, 60, 255]</rosparam>
+    <param name="erode_size" value="3"/>
+    <param name="dilate_size" value="5"/>
+    <param name="min_confidence_white" value="0.7"/>
+    <param name="morph_kernel" value="3"/>
+  </node>
+
+  <!-- Publishes ALL test images on the image topic -->
+  <node pkg="img_proc_aux" type="image_pub.py" name="image_pub" output="screen"/>
+
+  <!-- One viewer for the original image and one per output topic -->
+  <node pkg="rqt_image_view" type="rqt_image_view" name="image_view" args="image"/>
+  <node pkg="rqt_image_view" type="rqt_image_view" name="image_view_cropped" args="image_cropped"/>
+  <node pkg="rqt_image_view" type="rqt_image_view" name="image_view_white" args="image_white"/>
+  <node pkg="rqt_image_view" type="rqt_image_view" name="image_view_white_ml" args="image_white_ml"/>
+</launch>
