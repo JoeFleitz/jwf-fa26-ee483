@@ -1,0 +1,31 @@
+<launch>
+    <!-- Publishes the four test images on the "image" topic -->
+    <node pkg="img_proc_aux" type="image_pub.py" name="image_pub"/>
+
+    <!-- Node 1: crop + HSV white mask -->
+    <node pkg="ex6" type="image_processor.py" name="image_processor" output="screen">
+        <rosparam param="hsv_lower">[0, 0, 140]</rosparam>
+        <rosparam param="hsv_upper">[180, 80, 255]</rosparam>
+        <param name="crop_fraction" value="0.5"/>
+        <param name="erode_size" value="0"/>
+        <param name="dilate_size" value="5"/>
+    </node>
+
+    <!-- Node 2: Canny + bitwise_and + Hough + draw lines -->
+    <node pkg="ex6" type="lane_lines.py" name="lane_lines" output="screen">
+        <param name="canny_low" value="50"/>
+        <param name="canny_high" value="150"/>
+        <param name="blur_size" value="5"/>
+        <param name="edge_dilate" value="3"/>
+        <param name="hough_threshold" value="20"/>
+        <param name="min_line_length" value="15"/>
+        <param name="max_line_gap" value="10"/>
+    </node>
+
+    <!-- One viewer per topic -->
+    <node pkg="rqt_image_view" type="rqt_image_view" name="image_view_raw" args="image"/>
+    <node pkg="rqt_image_view" type="rqt_image_view" name="image_view_cropped" args="image_cropped"/>
+    <node pkg="rqt_image_view" type="rqt_image_view" name="image_view_white" args="image_white"/>
+    <node pkg="rqt_image_view" type="rqt_image_view" name="image_view_edges" args="image_edges"/>
+    <node pkg="rqt_image_view" type="rqt_image_view" name="image_view_lines_white" args="image_lines_white"/>
+</launch>
