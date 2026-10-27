@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="coord_transf_aux" type="sensor.py" name="sensor" output="screen"/>
+  <node pkg="ex7" type="coord_transform.py" name="coord_transform" output="screen"/>
+  <node pkg="rostopic" type="rostopic" name="echo_robot_coord" args="echo robot_coord" output="screen"/>
+  <node pkg="rostopic" type="rostopic" name="echo_world_coord" args="echo world_coord" output="screen"/>
+</launch>
