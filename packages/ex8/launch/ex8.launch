@@ -1,0 +1,7 @@
+<launch>
+  <param name="controller_ready" type="string" value="false"/>
+
+  <include file="$(find controls_aux)/launch/start_dynamics.launch"/>
+
+  <node pkg="ex8" type="pid_controller.py" name="pid_controller" output="screen"/>
+</launch>
