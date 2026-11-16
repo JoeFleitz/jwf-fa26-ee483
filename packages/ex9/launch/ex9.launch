@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find odom_aux)/launch/odom_hw.launch"/>
+    <node pkg="ex9" name="odometry" type="odometry.py" output="screen"/>
+</launch>
